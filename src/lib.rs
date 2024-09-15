@@ -153,7 +153,7 @@ pub fn run(pkgnames: Vec<String>, dbpath: Option<String>, repos: Vec<String>) ->
     let mut packages = Vec::new();
     for pkg in &pkgnames {
         let repopkg = find_package_anywhere(pkg, &pacman)?;
-        packages.push(jsonify_package(&repopkg, &reverse_deps_map)?);
+        packages.push(jsonify_package(repopkg, &reverse_deps_map)?);
     }
 
     Ok(serde_json::to_string(&packages)?)
